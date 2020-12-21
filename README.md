@@ -1,4 +1,5 @@
-# tv-shows-app
+# Tv-Shows-App
+An application that allows users to view a few lists(preferable horizontal list) of TV shows based on different genres (drama, comedy, sports, etc.).
 
 ## Project setup
 ```
@@ -25,5 +26,3 @@ npm run test:unit
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
