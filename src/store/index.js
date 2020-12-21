@@ -11,7 +11,18 @@ export default new Vuex.Store({
   },
   getters: {
     loading: state => state.loading,
-    showsList: state => state.showsList
+    showsList: state => state.showsList,
+    getListsByGenre: state => genre => {
+      return state.showsList
+        .filter(show => {
+          return show.genres.includes(genre);
+        })
+        .sort((showA, showB) => {
+          var ratingA = showA.rating.average;
+          var ratingB = showB.rating.average;
+          return ratingB - ratingA;
+        });
+    }
   },
   mutations: {
     CHANGE_LOADING_STATUS(state, message) {

@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard">
-    {{ getGenres }}
     <all-shows-by-genres
       v-for="genre in allGenres"
       :key="genre.id"
