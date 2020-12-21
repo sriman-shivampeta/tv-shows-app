@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <router-view />
+    <Header />
+    <router-view class="router-view"></router-view>
   </div>
 </template>
 
@@ -21,19 +21,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  background-color: #121212;
+  color: #ffffff;
+  height: 100%;
+  min-height: 100vh;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.router-view {
+  padding-top: 55px;
 }
 </style>

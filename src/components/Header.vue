@@ -1,13 +1,13 @@
 <template>
   <div class="header">
-    <b-navbar toggleable="sm" type="dark" variant="dark">
+    <b-navbar fixed="top" toggleable="sm" type="dark" variant="dark">
       <b-navbar-brand>Tv Shows</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">All Shows</b-nav-item>
+          <b-nav-item>All Shows</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned Search items -->
