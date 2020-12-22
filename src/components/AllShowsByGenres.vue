@@ -18,7 +18,12 @@
       >
         <b-card v-if="show.image" :img-src="show.image.medium" img-top>
           <b-card-text>
-            <router-link to="">
+            <router-link
+              :to="{
+                name: 'ShowDetails',
+                params: { id: show.id, name: show.name }
+              }"
+            >
               <span>{{ show.name }}</span
               ><br />{{ show.language }} | {{ show.rating.average }}
             </router-link>

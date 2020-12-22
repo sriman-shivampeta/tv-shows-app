@@ -16,11 +16,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Lato, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   background-color: #121212;
   color: #ffffff;
   height: 100%;
@@ -30,6 +30,22 @@ export default {
   padding-top: 55px;
 }
 
+// Loader Style
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  text-shadow: 0 0 1px #c0c0c075;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+}
+
+// VueCarousel Style
 .VueCarousel {
   .VueCarousel-slide {
     transform: scale(0.9);

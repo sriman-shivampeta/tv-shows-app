@@ -1,10 +1,15 @@
 <template>
   <div class="dashboard">
-    <all-shows-by-genres
-      v-for="genre in allGenres"
-      :key="genre.id"
-      :genre="genre"
-    ></all-shows-by-genres>
+    <div class="loader" v-if="loading">
+      <h2>Loading...</h2>
+    </div>
+    <template v-else>
+      <all-shows-by-genres
+        v-for="genre in allGenres"
+        :key="genre.id"
+        :genre="genre"
+      ></all-shows-by-genres>
+    </template>
   </div>
 </template>
 
@@ -17,7 +22,7 @@ export default {
     AllShowsByGenres
   },
   computed: {
-    ...mapGetters(["showsList"]),
+    ...mapGetters(["loading", "showsList"]),
     allGenres() {
       let getGenres = [];
       this.showsList.map(shows => {

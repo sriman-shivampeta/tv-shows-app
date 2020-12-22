@@ -6,4 +6,8 @@ const getAllTvShows = () => {
   return axios.get(_URL + "/shows").then(res => res.data);
 };
 
-export { getAllTvShows };
+const getTvShowById = id => {
+  return axios.get(_URL + "/shows/" + id + "?embed=cast").then(res => res.data);
+};
+
+export { getAllTvShows, getTvShowById };
