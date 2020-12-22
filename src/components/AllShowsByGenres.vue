@@ -2,7 +2,13 @@
   <div class="all-shows-by-genre">
     <div class="genre-heading">
       <span>{{ genre }}</span>
-      <router-link to="">View more...</router-link>
+      <router-link
+        :to="{
+          name: 'Selected Genre',
+          params: { genre: genre }
+        }"
+        >View more...</router-link
+      >
     </div>
     <carousel
       :mouse-drag="true"
