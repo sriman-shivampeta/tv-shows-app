@@ -51,7 +51,7 @@ import { Carousel, Slide } from "vue-carousel";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "AllShowsByGenres",
+  name: "ShowsByAllGenres",
   props: {
     genre: {
       type: String

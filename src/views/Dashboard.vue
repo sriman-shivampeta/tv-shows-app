@@ -4,22 +4,22 @@
       <h2>Loading...</h2>
     </div>
     <template v-else>
-      <all-shows-by-genres
+      <shows-by-all-genres
         v-for="genre in allGenres"
         :key="genre.id"
         :genre="genre"
-      ></all-shows-by-genres>
+      ></shows-by-all-genres>
     </template>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import AllShowsByGenres from "../components/AllShowsByGenres.vue";
+import ShowsByAllGenres from "../components/ShowsByAllGenres.vue";
 export default {
   name: "Dashboard",
   components: {
-    AllShowsByGenres
+    ShowsByAllGenres
   },
   computed: {
     ...mapGetters(["loading", "showsList"]),

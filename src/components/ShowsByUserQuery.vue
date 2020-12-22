@@ -9,7 +9,14 @@
           Tv shows based on search "{{ searchTVShowVal }}"
         </div>
         <b-row>
-          <b-col sm="3" v-for="show in getSearchedShows" :key="show.id">
+          <b-col
+            lg="2"
+            md="3"
+            sm="4"
+            cols="6"
+            v-for="show in getSearchedShows"
+            :key="show.id"
+          >
             <b-card v-if="show.image" :img-src="show.image.medium" img-top>
               <b-card-text>
                 <router-link

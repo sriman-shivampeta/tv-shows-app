@@ -25,6 +25,7 @@ export default {
   color: #ffffff;
   height: 100%;
   min-height: 100vh;
+  overflow: hidden;
 }
 .router-view {
   padding-top: 55px;

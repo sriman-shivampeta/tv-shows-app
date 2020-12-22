@@ -4,6 +4,7 @@ import Dashboard from "@/views/Dashboard.vue";
 import ShowDetails from "@/components/ShowDetails.vue";
 import ShowsBySelectedGenre from "@/components/ShowsBySelectedGenre.vue";
 import ShowsByUserQuery from "../components/ShowsByUserQuery.vue";
+import PageNotFound from "../components/PageNotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,10 @@ const routes = [
     path: "/showsbyquery/:searchTVShowVal",
     name: "ShowsByUserQuery",
     component: ShowsByUserQuery
+  },
+  {
+    path: "*",
+    component: PageNotFound
   }
 ];
 
