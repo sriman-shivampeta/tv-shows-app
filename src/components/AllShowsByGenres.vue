@@ -13,7 +13,13 @@
     <carousel
       :mouse-drag="true"
       :navigationEnabled="true"
-      :perPageCustom="responsive"
+      :perPageCustom="[
+        [320, 2],
+        [420, 2],
+        [768, 3],
+        [1024, 5],
+        [1200, 7]
+      ]"
       :paginationEnabled="false"
       navigationPrevLabel="&#8249;"
       navigationNextLabel="&#8250;"
@@ -50,17 +56,6 @@ export default {
     genre: {
       type: String
     }
-  },
-  data() {
-    return {
-      responsive: [
-        [320, 2],
-        [420, 2],
-        [768, 3],
-        [1024, 5],
-        [1200, 7]
-      ]
-    };
   },
   components: {
     Carousel,

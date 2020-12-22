@@ -12,14 +12,16 @@
 
         <!-- Right aligned Search items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-form>
-            <b-form-input
-              size="sm"
-              class="mr-sm-2"
-              placeholder="Search for show...!"
-            ></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0">Search</b-button>
-          </b-nav-form>
+          <b-form-input
+            size="sm"
+            class="mr-sm-2"
+            placeholder="Search for show...!"
+            v-model="searchTVShows"
+            @keypress.enter="searchShowsFunc"
+          ></b-form-input>
+          <b-button size="sm" class="my-2 my-sm-0" @click="searchShowsFunc"
+            >Search</b-button
+          >
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -29,6 +31,20 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      searchTVShows: ""
+    };
+  },
+  methods: {
+    searchShowsFunc() {
+      this.$router.push({
+        name: "ShowsByUserQuery",
+        params: { searchTVShowVal: this.searchTVShows }
+      });
+      this.searchTVShows = "";
+    }
+  },
   created() {
     this.$store.dispatch("getAllTvShows");
   }

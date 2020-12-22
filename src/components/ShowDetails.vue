@@ -1,6 +1,6 @@
 <template>
   <div class="show-details">
-    <div class="showDetail" id="showDetail-card">
+    <div class="showDetail">
       <div class="showDetail__data">
         <template class="loading" v-if="loading">
           Loading...
@@ -25,7 +25,14 @@
           <div class="showDetail__details">
             <h2 class="showDetail__title">{{ showDetails.name }}</h2>
             <p class="showDetail__genres">
-              {{ showDetails.genres.join(" | ") }}
+              {{ showDetails.genres.join(" | ") }} -
+              <a
+                href="#showCast"
+                @click="showCast = !showCast"
+                style="color: #212121;"
+              >
+                <strong><u>show casts</u></strong>
+              </a>
             </p>
             <p class="showDetail__plot" v-html="showDetails.summary"></p>
             <div class="showDetail__credits">
@@ -61,6 +68,20 @@
         </template>
       </div>
     </div>
+    <div class="showDetail" id="showCast" v-if="showCast">
+      <div class="showDetail__cast">
+        <div v-for="cast in showDetails._embedded.cast" :key="cast.id">
+          <a :href="cast.person.url" target="_black">
+            <img
+              :src="cast.person.image.medium"
+              @load="showImg = true"
+              v-show="showImg"
+            />
+            {{ cast.person.name }}
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -70,7 +91,8 @@ export default {
   name: "ShowDetails",
   data() {
     return {
-      showImg: false
+      showImg: false,
+      showCast: false
     };
   },
   computed: {
@@ -99,6 +121,7 @@ $bp-md: 1024px;
 $bp-sm: 400px;
 .show-details {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   // padding: $base-spacing;
@@ -138,6 +161,25 @@ $bp-sm: 400px;
 
     @media (min-width: $bp-md) {
       flex-direction: row;
+    }
+  }
+
+  &__cast {
+    // color: #121212;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    grid-gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+
+    div {
+      background-color: #292929;
+      a {
+        color: #fff;
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 

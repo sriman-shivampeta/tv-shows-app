@@ -1,6 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { getAllTvShows, getTvShowById } from "@/service/httpClient";
+import {
+  getAllTvShows,
+  getTvShowById,
+  getTvShowsByName
+} from "@/service/httpClient";
 
 Vue.use(Vuex);
 
@@ -8,12 +12,14 @@ export default new Vuex.Store({
   state: {
     loading: false,
     showsList: [],
-    showDetails: {}
+    showDetails: {},
+    searchedShows: []
   },
   getters: {
     loading: state => state.loading,
     showsList: state => state.showsList,
     showDetails: state => state.showDetails,
+    searchedShows: state => state.searchedShows,
     getListsByGenre: state => genre => {
       return state.showsList
         .filter(show => {
@@ -37,6 +43,10 @@ export default new Vuex.Store({
     SAVE_SHOW_DETAILS: (state, message) => {
       state.showDetails = message;
       state.loading = false;
+    },
+    SAVE_SEARCHED_SHOWS: (state, message) => {
+      state.searchedShows = message;
+      state.loading = false;
     }
   },
   actions: {
@@ -55,6 +65,21 @@ export default new Vuex.Store({
       await getTvShowById(id)
         .then(result => {
           commit("SAVE_SHOW_DETAILS", result);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    async getTvShowsByName({ commit }, name) {
+      commit("CHANGE_LOADING_STATUS", true);
+      await getTvShowsByName(name)
+        .then(result => {
+          commit(
+            "SAVE_SEARCHED_SHOWS",
+            result.map(getShow => {
+              return getShow.show;
+            })
+          );
         })
         .catch(err => {
           console.log(err);

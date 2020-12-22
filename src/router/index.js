@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Dashboard from "@/views/Dashboard.vue";
 import ShowDetails from "@/components/ShowDetails.vue";
 import ShowsBySelectedGenre from "@/components/ShowsBySelectedGenre.vue";
+import ShowsByUserQuery from "../components/ShowsByUserQuery.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/genre/:genre",
     name: "Selected Genre",
     component: ShowsBySelectedGenre
+  },
+  {
+    path: "/showsbyquery/:searchTVShowVal",
+    name: "ShowsByUserQuery",
+    component: ShowsByUserQuery
   }
 ];
 
