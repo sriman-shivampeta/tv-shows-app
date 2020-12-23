@@ -171,6 +171,7 @@ $bp-sm: 400px;
     grid-gap: 1rem;
     padding: 1rem;
     text-align: center;
+    align-items: self-start;
 
     div {
       background-color: #292929;

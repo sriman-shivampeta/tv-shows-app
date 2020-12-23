@@ -1,18 +1,17 @@
 <template>
-  <div class="all-shows-by-genre">
+  <div class="popular-shows">
     <div class="genre-heading">
-      <span>{{ genre }}</span>
-      <router-link
-        :to="{
-          name: 'Selected Genre',
-          params: { genre: genre }
-        }"
-        >View more...</router-link
-      >
+      <span>Popular</span>
     </div>
     <carousel
-      :mouse-drag="false"
-      :navigationEnabled="true"
+      :mouse-drag="true"
+      :autoplay="true"
+      :autoplayTimeout="3000"
+      :autoplayHoverPause="true"
+      :loop="true"
+      paginationActiveColor="#585858"
+      :paginationPadding="2"
+      :navigationEnabled="false"
       :perPageCustom="[
         [320, 2],
         [420, 2],
@@ -20,14 +19,9 @@
         [1024, 5],
         [1200, 7]
       ]"
-      :paginationEnabled="false"
-      navigationPrevLabel="&#8249;"
-      navigationNextLabel="&#8250;"
+      :paginationEnabled="true"
     >
-      <slide
-        v-for="(show, index) in getListsByGenre(genre).slice(0, 15)"
-        :key="index"
-      >
+      <slide v-for="(show, index) in getPopularShows.slice(0, 10)" :key="index">
         <b-card v-if="show.image" :img-src="show.image.medium" img-top>
           <b-card-text>
             <router-link
@@ -51,24 +45,22 @@ import { Carousel, Slide } from "vue-carousel";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "ShowsByAllGenres",
-  props: {
-    genre: {
-      type: String
-    }
-  },
+  name: "PopularShows",
   components: {
     Carousel,
     Slide
   },
   computed: {
-    ...mapGetters(["getListsByGenre"])
+    ...mapGetters(["showsList"]),
+    getPopularShows() {
+      return this.showsList;
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.all-shows-by-genre {
+.popular-shows {
   margin: 0 3%;
   .genre-heading {
     display: flex;

@@ -73,5 +73,11 @@ export default {
       outline: none !important;
     }
   }
+  .VueCarousel-pagination {
+    .VueCarousel-dot {
+      border: 1px solid #ffffff;
+      margin: 0 3px;
+    }
+  }
 }
 </style>

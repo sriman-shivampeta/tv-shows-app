@@ -4,6 +4,7 @@
       <h2>Loading...</h2>
     </div>
     <template v-else>
+      <popular-shows></popular-shows>
       <shows-by-all-genres
         v-for="genre in allGenres"
         :key="genre.id"
@@ -15,11 +16,13 @@
 
 <script>
 import { mapGetters } from "vuex";
+import PopularShows from "../components/PopularShows.vue";
 import ShowsByAllGenres from "../components/ShowsByAllGenres.vue";
 export default {
   name: "Dashboard",
   components: {
-    ShowsByAllGenres
+    ShowsByAllGenres,
+    PopularShows
   },
   computed: {
     ...mapGetters(["loading", "showsList"]),

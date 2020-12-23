@@ -17,19 +17,18 @@ export default new Vuex.Store({
   },
   getters: {
     loading: state => state.loading,
-    showsList: state => state.showsList,
+    showsList: state =>
+      state.showsList.sort((showA, showB) => {
+        var ratingA = showA.rating.average;
+        var ratingB = showB.rating.average;
+        return ratingB - ratingA;
+      }),
     showDetails: state => state.showDetails,
     searchedShows: state => state.searchedShows,
     getListsByGenre: state => genre => {
-      return state.showsList
-        .filter(show => {
-          return show.genres.includes(genre);
-        })
-        .sort((showA, showB) => {
-          var ratingA = showA.rating.average;
-          var ratingB = showB.rating.average;
-          return ratingB - ratingA;
-        });
+      return state.showsList.filter(show => {
+        return show.genres.includes(genre);
+      });
     }
   },
   mutations: {
