@@ -1,7 +1,7 @@
 <template>
   <div class="popular-shows">
     <div class="genre-heading">
-      <span>Popular</span>
+      <span>{{ genre }}</span>
     </div>
     <carousel
       :mouse-drag="true"
@@ -21,7 +21,10 @@
       ]"
       :paginationEnabled="true"
     >
-      <slide v-for="(show, index) in getPopularShows.slice(0, 10)" :key="index">
+      <slide
+        v-for="(show, index) in getListsByGenre(genre).slice(0, 10)"
+        :key="index"
+      >
         <b-card v-if="show.image" :img-src="show.image.medium" img-top>
           <b-card-text>
             <router-link
@@ -46,15 +49,17 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "PopularShows",
+  props: {
+    genre: {
+      type: String
+    }
+  },
   components: {
     Carousel,
     Slide
   },
   computed: {
-    ...mapGetters(["showsList"]),
-    getPopularShows() {
-      return this.showsList;
-    }
+    ...mapGetters(["getListsByGenre"])
   }
 };
 </script>

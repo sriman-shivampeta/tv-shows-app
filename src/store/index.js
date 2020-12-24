@@ -26,6 +26,7 @@ export default new Vuex.Store({
     showDetails: state => state.showDetails,
     searchedShows: state => state.searchedShows,
     getListsByGenre: state => genre => {
+      if (genre === "Popular") return state.showsList;
       return state.showsList.filter(show => {
         return show.genres.includes(genre);
       });
@@ -51,38 +52,23 @@ export default new Vuex.Store({
   actions: {
     async getAllTvShows({ commit }) {
       commit("CHANGE_LOADING_STATUS", true);
-      await getAllTvShows()
-        .then(result => {
-          commit("SAVE_SHOWLIST", result);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      const result = await getAllTvShows();
+      commit("SAVE_SHOWLIST", result);
     },
     async getTvShowById({ commit }, id) {
       commit("CHANGE_LOADING_STATUS", true);
-      await getTvShowById(id)
-        .then(result => {
-          commit("SAVE_SHOW_DETAILS", result);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      const result = await getTvShowById(id);
+      commit("SAVE_SHOW_DETAILS", result);
     },
     async getTvShowsByName({ commit }, name) {
       commit("CHANGE_LOADING_STATUS", true);
-      await getTvShowsByName(name)
-        .then(result => {
-          commit(
-            "SAVE_SEARCHED_SHOWS",
-            result.map(getShow => {
-              return getShow.show;
-            })
-          );
+      const result = await getTvShowsByName(name);
+      commit(
+        "SAVE_SEARCHED_SHOWS",
+        result.map(getShow => {
+          return getShow.show;
         })
-        .catch(err => {
-          console.log(err);
-        });
+      );
     }
   },
   modules: {}

@@ -4,7 +4,7 @@
       <h2>Loading...</h2>
     </div>
     <template v-else>
-      <popular-shows></popular-shows>
+      <popular-shows genre="Popular"></popular-shows>
       <shows-by-all-genres
         v-for="genre in allGenres"
         :key="genre.id"
@@ -31,8 +31,7 @@ export default {
       this.showsList.map(shows => {
         getGenres.push(...shows.genres);
       });
-      getGenres.sort();
-      return Array.from(new Set(getGenres));
+      return Array.from(new Set(getGenres)).sort();
     }
   }
 };
