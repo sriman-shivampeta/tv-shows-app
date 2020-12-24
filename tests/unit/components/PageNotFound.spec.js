@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import VueRouter from "vue-router";
-import PageNotFound from "../../../src/components/PageNotFound.vue";
+import PageNotFound from "@/components/PageNotFound.vue";
 
 describe("PageNotFound Component", () => {
   let wrapper;

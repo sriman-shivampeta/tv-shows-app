@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import Dashboard from "../../../src/views/Dashboard.vue";
+import Dashboard from "@/views/Dashboard.vue";
 import { allTvShowsResponse } from "../service/response_mock";
 
 describe("Dashboard.vue View", () => {

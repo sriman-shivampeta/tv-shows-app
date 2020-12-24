@@ -58,9 +58,14 @@ export default {
   computed: {
     ...mapGetters(["loading", "searchedShows"]),
     getSearchedShows() {
-      return this.searchedShows.filter(show => {
-        return show.image !== null;
-      });
+      return this.searchedShows
+        .map(getShow => getShow.show)
+        .filter(show => show.image !== null)
+        .sort((showA, showB) => {
+          var ratingA = showA.rating.average;
+          var ratingB = showB.rating.average;
+          return ratingB - ratingA;
+        });
     }
   },
   created() {

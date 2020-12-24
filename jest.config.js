@@ -1,4 +1,5 @@
 module.exports = {
+  name: "tv-shows-app",
   preset: "@vue/cli-plugin-unit-jest",
   moduleFileExtensions: ["js", "json", "vue"],
   transform: {

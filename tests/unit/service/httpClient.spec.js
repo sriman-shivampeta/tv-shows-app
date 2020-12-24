@@ -3,7 +3,7 @@ import {
   getAllTvShows,
   getTvShowById,
   getTvShowsByName
-} from "../../../src/service/httpClient";
+} from "@/service/httpClient";
 import { allTvShowsResponse } from "./response_mock";
 
 jest.mock("axios");

@@ -2,9 +2,9 @@ import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import router from "../../../src/router/index.js";
+import router from "@/router/index.js";
 import { BootstrapVue } from "bootstrap-vue";
-import Header from "../../../src/components/Header.vue";
+import Header from "@/components/Header.vue";
 
 describe("Header Component", () => {
   let wrapper;

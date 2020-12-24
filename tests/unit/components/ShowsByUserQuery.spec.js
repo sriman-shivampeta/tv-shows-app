@@ -3,7 +3,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 import { BootstrapVue } from "bootstrap-vue";
-import ShowsByUserQuery from "../../../src/components/ShowsByUserQuery.vue";
+import ShowsByUserQuery from "@/components/ShowsByUserQuery.vue";
 import { searchedShows } from "../service/response_mock";
 
 describe("searchedShows Component", () => {
@@ -55,9 +55,7 @@ describe("searchedShows Component", () => {
 
   describe("Get searchedShows response for router params value", () => {
     test("searchedShows response length should be atleast 1", () => {
-      expect(
-        Object.keys(wrapper.vm.$store.getters.searchedShows).length
-      ).toBeTruthy();
+      expect(Object.keys(wrapper.vm.getSearchedShows).length).toBeTruthy();
     });
 
     test("routerLink to attribute should match with searchedShows response data object.", async () => {
@@ -67,7 +65,10 @@ describe("searchedShows Component", () => {
       await routerLink.trigger("click");
       expect(routerLink.props().to).toStrictEqual({
         name: "ShowDetails",
-        params: { id: searchedShows[0].id, name: searchedShows[0].name }
+        params: {
+          id: searchedShows[0].show.id,
+          name: searchedShows[0].show.name
+        }
       });
       expect(
         wrapper
@@ -75,7 +76,7 @@ describe("searchedShows Component", () => {
             ".shows-by-userQuery b-container-stub b-card-text-stub router-link-stub span"
           )
           .text()
-      ).toBe(searchedShows[0].name);
+      ).toBe(searchedShows[0].show.name);
     });
 
     // test("routerLink to attribute should match with searchedShows response data object.", async () => {

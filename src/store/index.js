@@ -18,18 +18,14 @@ export default new Vuex.Store({
   getters: {
     loading: state => state.loading,
     showsList: state =>
-      state.showsList.sort((showA, showB) => {
-        var ratingA = showA.rating.average;
-        var ratingB = showB.rating.average;
-        return ratingB - ratingA;
-      }),
+      state.showsList.sort(
+        (showA, showB) => showB.rating.average - showA.rating.average
+      ),
     showDetails: state => state.showDetails,
     searchedShows: state => state.searchedShows,
     getShowsByGenre: state => genre => {
       if (genre === "Popular") return state.showsList;
-      return state.showsList.filter(show => {
-        return show.genres.includes(genre);
-      });
+      return state.showsList.filter(show => show.genres.includes(genre));
     }
   },
   mutations: {
@@ -63,12 +59,7 @@ export default new Vuex.Store({
     async getTvShowsByName({ commit }, name) {
       commit("CHANGE_LOADING_STATUS", true);
       const result = await getTvShowsByName(name);
-      commit(
-        "SAVE_SEARCHED_SHOWS",
-        result.map(getShow => {
-          return getShow.show;
-        })
-      );
+      commit("SAVE_SEARCHED_SHOWS", result);
     }
   },
   modules: {}

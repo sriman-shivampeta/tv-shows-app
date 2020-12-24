@@ -3,7 +3,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import { getShowsByGenre } from "../service/response_mock";
-import ShowsBySelectedGenre from "../../../src/components/ShowsBySelectedGenre.vue";
+import ShowsBySelectedGenre from "@/components/ShowsBySelectedGenre.vue";
 import VueCarousel from "vue-carousel";
 import { BootstrapVue } from "bootstrap-vue";
 
