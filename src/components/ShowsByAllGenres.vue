@@ -3,6 +3,7 @@
     <div class="genre-heading">
       <span>{{ genre }}</span>
       <router-link
+        v-if="hideViewBtn === 'true'"
         :to="{
           name: 'Selected Genre',
           params: { genre: genre }
@@ -11,8 +12,7 @@
       >
     </div>
     <carousel
-      :mouse-drag="false"
-      :navigationEnabled="true"
+      v-bind="carouselOptions"
       :perPageCustom="[
         [320, 2],
         [420, 2],
@@ -20,12 +20,9 @@
         [1024, 5],
         [1200, 7]
       ]"
-      :paginationEnabled="false"
-      navigationPrevLabel="&#8249;"
-      navigationNextLabel="&#8250;"
     >
       <slide
-        v-for="(show, index) in getListsByGenre(genre).slice(0, 15)"
+        v-for="(show, index) in getShowsByGenre(genre).slice(0, 15)"
         :key="index"
       >
         <b-card v-if="show.image" :img-src="show.image.medium" img-top>
@@ -55,6 +52,12 @@ export default {
   props: {
     genre: {
       type: String
+    },
+    hideViewBtn: {
+      type: String
+    },
+    carouselOptions: {
+      type: Object
     }
   },
   components: {
@@ -62,7 +65,7 @@ export default {
     Slide
   },
   computed: {
-    ...mapGetters(["getListsByGenre"])
+    ...mapGetters(["getShowsByGenre"])
   }
 };
 </script>

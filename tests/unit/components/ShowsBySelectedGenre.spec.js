@@ -2,7 +2,7 @@ import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import { getListsByGenre } from "../service/response_mock";
+import { getShowsByGenre } from "../service/response_mock";
 import ShowsBySelectedGenre from "../../../src/components/ShowsBySelectedGenre.vue";
 import VueCarousel from "vue-carousel";
 import { BootstrapVue } from "bootstrap-vue";
@@ -20,8 +20,8 @@ describe("ShowsBySelectedGenre Component", () => {
       dispatch: jest.fn(),
       getters: {
         loading: false,
-        getListsByGenre: () => {
-          return getListsByGenre;
+        getShowsByGenre: () => {
+          return getShowsByGenre;
         }
       }
     };
@@ -60,12 +60,12 @@ describe("ShowsBySelectedGenre Component", () => {
     await routerLink.trigger("click");
     expect(routerLink.props().to).toStrictEqual({
       name: "ShowDetails",
-      params: { id: getListsByGenre[0].id, name: getListsByGenre[0].name }
+      params: { id: getShowsByGenre[0].id, name: getShowsByGenre[0].name }
     });
   });
 
-  test("It should show data from mapGetters(getListsByGenre) and display data inside container.", () => {
-    const name = wrapper.vm.$store.getters.getListsByGenre()[0].name;
+  test("It should show data from mapGetters(getShowsByGenre) and display data inside container.", () => {
+    const name = wrapper.vm.$store.getters.getShowsByGenre()[0].name;
     expect(
       wrapper
         .find(

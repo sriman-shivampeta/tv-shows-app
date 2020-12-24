@@ -3,7 +3,7 @@
     <div v-if="loading">
       Loading...
     </div>
-    <template v-else-if="Object.keys(getListsByGenre(genre)).length">
+    <template v-else-if="Object.keys(getShowsByGenre(genre)).length">
       <b-container fluid>
         <div class="genre-heading">Showing "{{ genre }}" Tv shows</div>
         <b-row>
@@ -12,7 +12,7 @@
             md="3"
             sm="4"
             cols="6"
-            v-for="show in getListsByGenre(genre)"
+            v-for="show in getShowsByGenre(genre)"
             :key="show.id"
           >
             <b-card v-if="show.image" :img-src="show.image.medium" img-top>
@@ -45,7 +45,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["loading", "getListsByGenre"])
+    ...mapGetters(["loading", "getShowsByGenre"])
   }
 };
 </script>

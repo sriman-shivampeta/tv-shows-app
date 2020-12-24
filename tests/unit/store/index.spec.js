@@ -29,9 +29,14 @@ describe("Store.spec.js", () => {
     test("Check searchedShows method", () => {
       expect(store.getters.searchedShows).toStrictEqual([]);
     });
-    test("Check getListsByGenre method", () => {
+    test("Check getShowsByGenre method", () => {
       store.commit("SAVE_SHOWLIST", allTvShowsResponse.data);
-      expect(store.getters.getListsByGenre.length).toBeGreaterThanOrEqual(1);
+      expect(
+        store.getters.getShowsByGenre("Popular").length
+      ).toBeGreaterThanOrEqual(1);
+      expect(
+        store.getters.getShowsByGenre("Action").length
+      ).toBeGreaterThanOrEqual(1);
     });
   });
 

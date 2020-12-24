@@ -25,7 +25,7 @@ export default new Vuex.Store({
       }),
     showDetails: state => state.showDetails,
     searchedShows: state => state.searchedShows,
-    getListsByGenre: state => genre => {
+    getShowsByGenre: state => genre => {
       if (genre === "Popular") return state.showsList;
       return state.showsList.filter(show => {
         return show.genres.includes(genre);

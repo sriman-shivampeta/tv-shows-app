@@ -132,7 +132,7 @@ export const getGenres = [
   "Western"
 ];
 
-export const getListsByGenre = [
+export const getShowsByGenre = [
   {
     id: 180,
     url: "http://www.tvmaze.com/shows/180/firefly",

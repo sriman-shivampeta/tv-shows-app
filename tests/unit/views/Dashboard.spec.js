@@ -1,7 +1,7 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import Dashboard from "../../../src/views/Dashboard.vue";
-import { getGenres } from "../service/response_mock";
+import { allTvShowsResponse } from "../service/response_mock";
 
 describe("Dashboard.vue View", () => {
   let wrapper;
@@ -11,18 +11,14 @@ describe("Dashboard.vue View", () => {
     const mockStore = {
       dispatch: jest.fn(),
       getters: {
-        loading: false
+        loading: false,
+        showsList: allTvShowsResponse.data
       }
     };
     wrapper = shallowMount(Dashboard, {
       localVue,
       mocks: {
         $store: mockStore
-      },
-      computed: {
-        allGenres() {
-          return getGenres;
-        }
       }
     });
   });
@@ -31,11 +27,11 @@ describe("Dashboard.vue View", () => {
     wrapper.destroy();
   });
 
-  it("Is it a vue instance or not", () => {
+  test("Is it a vue instance or not", () => {
     expect(wrapper.isVueInstance).toBeTruthy();
   });
 
-  it("Get all genre names from the store and have length atleast 1", () => {
+  test("Get all genre names from the store and have length atleast 1", () => {
     expect(wrapper.vm.allGenres.length).toBeGreaterThanOrEqual(1);
   });
 });

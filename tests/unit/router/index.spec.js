@@ -18,10 +18,9 @@ describe("App", () => {
       dispatch: jest.fn(),
       getters: {
         loading: jest.fn(),
-        errorMessage: jest.fn(),
         getGenres: jest.fn(),
         showDetails: jest.fn(),
-        getListsByGenre: jest.fn()
+        getShowsByGenre: jest.fn()
       }
     };
     wrapper = factory = cmp => {
