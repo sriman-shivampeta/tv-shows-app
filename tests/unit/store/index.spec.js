@@ -18,7 +18,7 @@ localVue.use(Vuex);
 describe("Store.spec.js", () => {
   describe("Checking Getters functions ... !", () => {
     test("Check loading method", () => {
-      expect(store.getters.loading).toBe(true);
+      expect(store.getters.loading).toBe(false);
     });
     test("Check showsList method", () => {
       expect(store.getters.showsList).toStrictEqual([]);
@@ -60,21 +60,23 @@ describe("Store.spec.js", () => {
   });
 
   describe("Checking Actions Success response call.", () => {
-    store.dispatch("getAllTvShows");
     test("Check getAllTvShows Api Call.", async () => {
+      store.dispatch("getAllTvShows");
       const result = await getAllTvShows();
       store.commit("SAVE_SHOWLIST", result.slice(0, 2));
       expect(store.getters.showsList).toStrictEqual(allTvShowsResponse.data);
     });
     test("Check getTvShowById Api Call.", async () => {
-      store.dispatch("getTvShowById");
-      const result = await getTvShowById(204);
+      const id = 204;
+      store.dispatch("getTvShowById", id);
+      const result = await getTvShowById(id);
       store.commit("SAVE_SHOW_DETAILS", result);
       expect(store.getters.showDetails).toStrictEqual(showDetails);
     });
     test("Check getTvShowsByName Api Call.", async () => {
-      store.dispatch("getTvShowsByName");
-      const result = await getTvShowsByName("Person");
+      const name = "Person";
+      store.dispatch("getTvShowsByName", name);
+      const result = await getTvShowsByName(name);
       store.commit("SAVE_SEARCHED_SHOWS", result.slice(0, 2));
       expect(store.getters.searchedShows.length).toBeGreaterThan(1);
     });
