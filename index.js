@@ -9,7 +9,7 @@ const port = process.env.PORT || 3001;
 app.use(express.static("dist"));
 
 app.get("*", (req, res) =>
-  res.sendFile(path.resolve(__dirname, "dist", "index.html"))
+  res.sendFile(path.resolve(__dirname + "/dist/index.html"))
 );
 
 const server = http.createServer(app);
