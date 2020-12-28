@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <div class="loader" v-if="loading">
+    <div class="content-on-page-center" v-if="loading">
       <h2>Loading...</h2>
     </div>
     <template v-else>

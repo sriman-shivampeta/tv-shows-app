@@ -50,27 +50,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.genre-heading {
-  font-size: 24px;
-  padding: 10px;
-  text-align: left;
-  font-weight: 600;
-}
-.card {
-  background-color: #292929;
-  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.06),
-    0 3px 8px 1px rgba(0, 0, 0, 0.16);
-  text-align: center;
-  transform: scale(0.9);
-  transition: transform 0.2s linear;
-  &:hover {
-    transform: scale(0.95);
-    transition: transform 0.2s linear;
-  }
-  .card-text a {
-    cursor: pointer;
-    color: #fff;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

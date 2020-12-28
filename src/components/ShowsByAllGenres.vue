@@ -77,12 +77,8 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 24px;
-    padding: 10px;
-    text-align: left;
-    font-weight: 600;
     a {
-      color: #fff;
+      color: var(--white);
       font-size: 16px;
     }
   }

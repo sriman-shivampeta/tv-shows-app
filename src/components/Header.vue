@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "Header",
   data() {
@@ -37,6 +38,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["getAllTvShows"]),
     searchShowsFunc() {
       this.$router.push({
         name: "ShowsByUserQuery",
@@ -46,7 +48,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getAllTvShows");
+    this.getAllTvShows();
   }
 };
 </script>

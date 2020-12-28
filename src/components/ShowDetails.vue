@@ -110,8 +110,6 @@ export default {
 <style lang="scss" scoped>
 $cardBG: #f2f2f2;
 
-$font-body: "Lato", sans-serif;
-$font-heading: $font-body;
 $base-spacing: 20px;
 $base-radius: 0.8em;
 $base-trans-spd: 0.4s;
@@ -126,7 +124,7 @@ $bp-sm: 400px;
   justify-content: center;
   // padding: $base-spacing;
   min-height: 100vh;
-  font-family: $font-body;
+  font-family: var(--font-family-lato);
   background-color: #121212;
 }
 .list {
@@ -165,7 +163,6 @@ $bp-sm: 400px;
   }
 
   &__cast {
-    // color: #121212;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
     grid-gap: 1rem;
@@ -176,7 +173,7 @@ $bp-sm: 400px;
     div {
       background-color: #292929;
       a {
-        color: #fff;
+        color: var(--white);
         img {
           width: 100%;
         }
@@ -286,7 +283,7 @@ $bp-sm: 400px;
   }
 
   &__title {
-    font-family: $font-heading;
+    font-family: var(--font-family-lato);
     font-size: 2em;
   }
 
