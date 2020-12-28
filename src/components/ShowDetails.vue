@@ -1,87 +1,94 @@
 <template>
   <div class="show-details">
-    <div class="showDetail">
-      <div class="showDetail__data">
-        <template class="loading" v-if="loading">
-          Loading...
-        </template>
-        <template v-else-if="Object.keys(showDetails).length">
-          <div class="showDetail__poster">
-            <span class="showDetail__poster--fill">
-              <transition name="fade">
-                <img
-                  :src="showDetails.image.original"
-                  @load="showImg = true"
-                  v-show="showImg"
-                /> </transition></span
-            ><span class="showDetail__poster--featured"
-              ><transition name="fade"
-                ><img
-                  :src="showDetails.image.medium"
-                  @load="showImg = true"
-                  v-show="showImg"/></transition
-            ></span>
-          </div>
-          <div class="showDetail__details">
-            <h2 class="showDetail__title">{{ showDetails.name }}</h2>
-            <p class="showDetail__genres">
-              {{ showDetails.genres.join(" | ") }} -
-              <a
-                href="#showCast"
-                @click="showCast = !showCast"
-                style="color: #212121;"
-              >
-                <strong><u>show casts</u></strong>
-              </a>
-            </p>
-            <p class="showDetail__plot" v-html="showDetails.summary"></p>
-            <div class="showDetail__credits">
-              <b-row>
-                <b-col lg="5" md="6" xs="12">
-                  <p><strong>Language: </strong> {{ showDetails.language }}</p>
-                  <p><strong>Type: </strong> {{ showDetails.type }}</p>
-                  <p v-if="showDetails.network !== null">
-                    <strong>Network : </strong> {{ showDetails.network.name }}
-                  </p>
-                  <p>
-                    <strong>Schedule : </strong>
-                    <span v-for="day in showDetails.schedule.days" :key="day">{{
-                      day
-                    }}</span>
-                    at {{ showDetails.schedule.time }}
-                  </p>
-                </b-col>
-                <b-col lg="5" md="6" xs="12">
-                  <p><strong>Show Type : </strong> {{ showDetails.type }}</p>
-                  <p><strong>Runtime: </strong> {{ showDetails.runtime }}</p>
-                  <p>
-                    <strong>Premiered: </strong> {{ showDetails.premiered }}
-                  </p>
-                  <p>
-                    <strong>Rating: </strong>
-                    {{ showDetails.rating.average }}/10
-                  </p>
-                </b-col>
-              </b-row>
+    <b-container fluid>
+      <b-button class="back-btn" v-router-back>Go back</b-button>
+      <div class="showDetail">
+        <div class="showDetail__data">
+          <template class="loading" v-if="loading">
+            Loading...
+          </template>
+          <template v-else-if="Object.keys(showDetails).length">
+            <div class="showDetail__poster">
+              <span class="showDetail__poster--fill">
+                <transition name="fade">
+                  <img
+                    :src="showDetails.image.original"
+                    @load="showImg = true"
+                    v-show="showImg"
+                  /> </transition></span
+              ><span class="showDetail__poster--featured"
+                ><transition name="fade"
+                  ><img
+                    :src="showDetails.image.medium"
+                    @load="showImg = true"
+                    v-show="showImg"/></transition
+              ></span>
             </div>
-          </div>
-        </template>
-      </div>
-    </div>
-    <div class="showDetail" id="showCast" v-if="showCast">
-      <div class="showDetail__cast">
-        <div v-for="cast in showDetails._embedded.cast" :key="cast.id">
-          <a :href="cast.person.url" target="_black">
-            <img
-              :src="cast.person.image.medium"
-              @load="showImg = true"
-              v-show="showImg"
-            />
-            {{ cast.person.name }}
-          </a>
+            <div class="showDetail__details">
+              <h2 class="showDetail__title">{{ showDetails.name }}</h2>
+              <p class="showDetail__genres">
+                {{ showDetails.genres.join(" | ") }} -
+                <a
+                  href="#showCast"
+                  @click="showCast = !showCast"
+                  style="color: #212121;"
+                >
+                  <strong><u>show casts</u></strong>
+                </a>
+              </p>
+              <p class="showDetail__plot" v-html="showDetails.summary"></p>
+              <div class="showDetail__credits">
+                <b-row>
+                  <b-col lg="5" md="6" xs="12">
+                    <p>
+                      <strong>Language: </strong> {{ showDetails.language }}
+                    </p>
+                    <p><strong>Type: </strong> {{ showDetails.type }}</p>
+                    <p v-if="showDetails.network !== null">
+                      <strong>Network : </strong> {{ showDetails.network.name }}
+                    </p>
+                    <p>
+                      <strong>Schedule : </strong>
+                      <span
+                        v-for="day in showDetails.schedule.days"
+                        :key="day"
+                        >{{ day }}</span
+                      >
+                      at {{ showDetails.schedule.time }}
+                    </p>
+                  </b-col>
+                  <b-col lg="5" md="6" xs="12">
+                    <p><strong>Show Type : </strong> {{ showDetails.type }}</p>
+                    <p><strong>Runtime: </strong> {{ showDetails.runtime }}</p>
+                    <p>
+                      <strong>Premiered: </strong> {{ showDetails.premiered }}
+                    </p>
+                    <p>
+                      <strong>Rating: </strong>
+                      {{ showDetails.rating.average }}/10
+                    </p>
+                  </b-col>
+                </b-row>
+              </div>
+            </div>
+          </template>
         </div>
       </div>
-    </div>
+      <div class="showDetail" id="showCast" v-if="showCast">
+        <div class="showDetail__cast">
+          <div v-for="cast in showDetails._embedded.cast" :key="cast.id">
+            <a :href="cast.person.url" target="_black">
+              <img
+                :src="cast.person.image.medium"
+                @load="showImg = true"
+                v-show="showImg"
+              />
+              {{ cast.person.name }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </b-container>
   </div>
 </template>
 
@@ -118,11 +125,6 @@ $poster-span: 200px;
 $bp-md: 1024px;
 $bp-sm: 400px;
 .show-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  // padding: $base-spacing;
   min-height: 100vh;
   font-family: var(--font-family-lato);
   background-color: #121212;
@@ -141,7 +143,7 @@ $bp-sm: 400px;
   position: relative;
   overflow: hidden;
   margin: $base-spacing auto;
-  width: 90%;
+  width: 100%;
   background-color: white;
   border-radius: $base-radius;
   box-shadow: rgba(0, 0, 0, 0.2) 0 30px 18px 6px;

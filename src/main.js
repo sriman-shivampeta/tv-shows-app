@@ -12,6 +12,15 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 
+Vue.directive("router-back", {
+  bind(el) {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      router.go(-1);
+    });
+  }
+});
+
 new Vue({
   router,
   store,

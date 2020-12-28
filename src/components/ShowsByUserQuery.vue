@@ -5,6 +5,7 @@
     </div>
     <template v-else-if="Object.keys(searchedShows).length">
       <b-container fluid>
+        <b-button class="back-btn" v-router-back>Go back</b-button>
         <div class="genre-heading">
           Tv shows based on search "{{ searchTVShowVal }}"
         </div>

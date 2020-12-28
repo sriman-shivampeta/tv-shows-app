@@ -3,7 +3,7 @@
     <div class="genre-heading">
       <span>{{ genre }}</span>
       <router-link
-        v-if="hideViewBtn === 'true'"
+        v-if="hideViewBtn"
         :to="{
           name: 'Selected Genre',
           params: { genre: genre }
@@ -54,7 +54,7 @@ export default {
       type: String
     },
     hideViewBtn: {
-      type: String
+      type: Boolean
     },
     carouselOptions: {
       type: Object

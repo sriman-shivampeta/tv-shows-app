@@ -14,6 +14,9 @@ describe("ShowDetails Component", () => {
     localVue.use(Vuex);
     localVue.use(VueRouter);
     Vue.use(BootstrapVue);
+    localVue.directive("router-back", {
+      bind: jest.fn()
+    });
     const mockStore = {
       dispatch: jest.fn(),
       getters: {

@@ -16,6 +16,9 @@ describe("ShowsBySelectedGenre Component", () => {
     localVue.use(VueRouter);
     localVue.use(VueCarousel);
     Vue.use(BootstrapVue);
+    localVue.directive("router-back", {
+      bind: jest.fn()
+    });
     const mockStore = {
       dispatch: jest.fn(),
       getters: {

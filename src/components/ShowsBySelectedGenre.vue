@@ -5,6 +5,7 @@
     </div>
     <template v-else-if="Object.keys(getShowsByGenre(genre)).length">
       <b-container fluid>
+        <b-button class="back-btn" v-router-back>Go back</b-button>
         <div class="genre-heading">Showing "{{ genre }}" Tv shows</div>
         <b-row>
           <b-col

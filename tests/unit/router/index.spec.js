@@ -1,7 +1,9 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
+import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import router from "@/router/index.js";
+import { BootstrapVue } from "bootstrap-vue";
 import Dashboard from "@/views/Dashboard.vue";
 import ShowDetails from "@/components/ShowDetails.vue";
 import ShowsBySelectedGenre from "@/components/ShowsBySelectedGenre.vue";
@@ -14,6 +16,10 @@ describe("App", () => {
     const localVue = createLocalVue();
     localVue.use(Vuex);
     localVue.use(VueRouter);
+    Vue.use(BootstrapVue);
+    localVue.directive("router-back", {
+      bind: jest.fn()
+    });
     const mockStore = {
       dispatch: jest.fn(),
       getters: {

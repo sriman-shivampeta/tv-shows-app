@@ -7,7 +7,7 @@
       <!-- Popular Shows -->
       <shows-by-all-genres
         genre="Popular"
-        hideViewBtn="false"
+        :hideViewBtn="false"
         :carouselOptions="popularShowCarouselOptions"
       ></shows-by-all-genres>
       <!-- All Genres -->
@@ -15,7 +15,7 @@
         v-for="genre in allGenres"
         :key="genre.id"
         :genre="genre"
-        hideViewBtn="true"
+        :hideViewBtn="true"
         :carouselOptions="allGenreCarouselOptions"
       ></shows-by-all-genres>
     </template>
