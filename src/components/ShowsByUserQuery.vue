@@ -61,11 +61,7 @@ export default {
       return this.searchedShows
         .map(getShow => getShow.show)
         .filter(show => show.image !== null)
-        .sort((showA, showB) => {
-          var ratingA = showA.rating.average;
-          var ratingB = showB.rating.average;
-          return ratingB - ratingA;
-        });
+        .sort((showA, showB) => showB.rating.average - showA.rating.average);
     }
   },
   created() {
