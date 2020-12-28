@@ -3,6 +3,11 @@
     <div v-if="loading">
       Loading...
     </div>
+    <template v-else-if="!loading && !Object.keys(searchedShows).length">
+      <div class=" content-on-page-center">
+        No data available.
+      </div>
+    </template>
     <template v-else-if="Object.keys(searchedShows).length">
       <b-container fluid>
         <b-button class="back-btn" v-router-back>Go back</b-button>
