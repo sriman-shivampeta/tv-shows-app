@@ -37,12 +37,18 @@
   text-align: center;
   transform: scale(0.9);
   transition: transform 0.2s linear;
+  height: 100%;
   &:hover {
     transform: scale(0.95);
     transition: transform 0.2s linear;
   }
-  .card-text a {
-    cursor: pointer;
-    color: var(--white);
+  .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card-text a {
+      cursor: pointer;
+      color: var(--white);
+    }
   }
 }

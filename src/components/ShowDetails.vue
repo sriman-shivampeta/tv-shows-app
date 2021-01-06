@@ -79,7 +79,14 @@
           <div v-for="cast in showDetails._embedded.cast" :key="cast.id">
             <a :href="cast.person.url" target="_black">
               <img
+                v-if="cast.person.image"
                 :src="cast.person.image.medium"
+                @load="showImg = true"
+                v-show="showImg"
+              />
+              <img
+                v-else
+                src="@/assets/images/no_image.png"
                 @load="showImg = true"
                 v-show="showImg"
               />
@@ -115,15 +122,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$cardBG: #f2f2f2;
-
-$base-spacing: 20px;
-$base-radius: 0.8em;
-$base-trans-spd: 0.4s;
-$poster-width: 140px;
-$poster-span: 200px;
-$bp-md: 1024px;
-$bp-sm: 400px;
 .show-details {
   min-height: 100vh;
   font-family: var(--font-family-lato);
@@ -134,7 +132,7 @@ $bp-sm: 400px;
     display: inline-block;
 
     &:not(:last-child) {
-      margin-right: $base-spacing;
+      margin-right: 20px;
     }
   }
 }
@@ -142,13 +140,13 @@ $bp-sm: 400px;
 .showDetail {
   position: relative;
   overflow: hidden;
-  margin: $base-spacing auto;
+  margin: 20px auto;
   width: 100%;
   background-color: white;
-  border-radius: $base-radius;
+  border-radius: 0.8em;
   box-shadow: rgba(0, 0, 0, 0.2) 0 30px 18px 6px;
 
-  @media (min-width: $bp-sm) and (max-width: $bp-md) {
+  @media (min-width: 400px) and (max-width: 1024px) {
     width: 95%;
   }
 
@@ -157,9 +155,9 @@ $bp-sm: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: $poster-span * 2;
+    min-height: 200px * 2;
 
-    @media (min-width: $bp-md) {
+    @media (min-width: 1024px) {
       flex-direction: row;
     }
   }
@@ -174,6 +172,9 @@ $bp-sm: 400px;
 
     div {
       background-color: #292929;
+      height: 100%;
+      display: flex;
+      justify-content: center;
       a {
         color: var(--white);
         img {
@@ -185,12 +186,12 @@ $bp-sm: 400px;
 
   &__search {
     position: absolute;
-    top: $base-spacing * 2;
-    right: $base-spacing * 2;
+    top: 20px * 2;
+    right: 20px * 2;
     margin: auto;
-    width: calc(100% - (#{$base-spacing} * 4));
+    width: calc(100% - (#{20px} * 4));
 
-    @media (min-width: $bp-sm) {
+    @media (min-width: 400px) {
       max-width: 200px;
     }
   }
@@ -215,9 +216,9 @@ $bp-sm: 400px;
     width: 100%;
     transform: translateZ(0);
 
-    @media (min-width: $bp-md) {
-      margin-right: $base-spacing;
-      width: $poster-span;
+    @media (min-width: 1024px) {
+      margin-right: 20px;
+      width: 200px;
     }
 
     &--fill {
@@ -231,7 +232,7 @@ $bp-sm: 400px;
       background-color: gainsboro;
       transform: rotate(5deg);
 
-      @media (min-width: $bp-md) {
+      @media (min-width: 1024px) {
         top: -20%;
         width: 100%;
       }
@@ -249,15 +250,15 @@ $bp-sm: 400px;
       position: relative;
       display: block;
       align-self: center;
-      margin-top: $base-spacing * 7;
-      margin-left: $base-spacing * 2;
-      // width: $poster-width;
+      margin-top: 20px * 7;
+      margin-left: 20px * 2;
+      // width: 140px;
       background-color: lightgray;
       border-radius: 2px;
       z-index: 1;
 
-      @media (min-width: $bp-md) {
-        left: $poster-width / 2.5;
+      @media (min-width: 1024px) {
+        left: 140px / 2.5;
         margin: auto;
       }
 
@@ -276,11 +277,11 @@ $bp-sm: 400px;
 
   &__details {
     flex: 1;
-    padding: $base-spacing * 2;
+    padding: 20px * 2;
     color: #121212;
 
-    @media (min-width: $bp-md) {
-      padding: $base-spacing * 3;
+    @media (min-width: 1024px) {
+      padding: 20px * 3;
     }
   }
 
@@ -309,7 +310,7 @@ $bp-sm: 400px;
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity $base-trans-spd;
+  transition: opacity 0.4s;
 }
 .fade-enter,
 .fade-leave-to {
@@ -318,7 +319,7 @@ $bp-sm: 400px;
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: opacity $base-trans-spd, transform $base-trans-spd;
+  transition: opacity 0.4s, transform 0.4s;
 }
 
 .slide-fade-enter,
