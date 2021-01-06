@@ -201,7 +201,7 @@ export const getShowsByGenre = [
     },
     summary:
       "<p><b>Stargate SG-1</b> is a science fiction series based on the original film <i>Stargate</i>. It involves the team SG-1 going on various adventures to different alien worlds through Stargates. Throughout the series they encounter various alien threats and allies including but not limited to the Goa'uld and the Asgard.</p>",
-    updated: 1606911913,
+    updated: 1609192287,
     _links: {
       self: {
         href: "http://api.tvmaze.com/shows/204"
@@ -226,7 +226,7 @@ export const showDetails = {
   officialSite: "http://stargate.mgm.com/view/series/1/index.html",
   schedule: { time: "20:00", days: ["Friday"] },
   rating: { average: 9.2 },
-  weight: 95,
+  weight: 97,
   network: {
     id: 16,
     name: "Syfy",
@@ -242,7 +242,7 @@ export const showDetails = {
   },
   summary:
     "<p><b>Stargate SG-1</b> is a science fiction series based on the original film <i>Stargate</i>. It involves the team SG-1 going on various adventures to different alien worlds through Stargates. Throughout the series they encounter various alien threats and allies including but not limited to the Goa'uld and the Asgard.</p>",
-  updated: 1606911913,
+  updated: 1609192287,
   _links: {
     self: { href: "http://api.tvmaze.com/shows/204" },
     previousepisode: { href: "http://api.tvmaze.com/episodes/13649" }
